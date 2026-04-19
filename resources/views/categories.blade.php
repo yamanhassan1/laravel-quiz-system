@@ -19,7 +19,7 @@
             <form action="/add-category" method="post" class="space-y-4">
                 @csrf
                 <div>
-                    <input type="text" name="category" id="" placeholder="Enter category name" class=" w-full px-4 py-1.5 border border-gray-300 rounded-xl focus:outline-none">
+                    <input type="text" name="category" required id="" placeholder="Enter category name" class=" w-full px-4 py-1.5 border border-gray-300 rounded-xl focus:outline-none">
                     @error('category')
                     <div class=" text-red-500">{{$message}}</div>
                     @enderror
