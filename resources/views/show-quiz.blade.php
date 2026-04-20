@@ -9,7 +9,7 @@
 <body>
     <x-navbar name={{$name}}></x-navbar>
     <div class=" bg-gray-100 flex flex-col items-center min-h-screen pt-5">
-        <h2 class=" text-2xl text-center text-gray-800 mb-6">All current Quiz's MCQs <a class=" text-yellow-500 text-sm" href="/add-quiz">Back</a></h2>
+        <h2 class=" text-2xl text-center text-gray-800 mb-6">Quiz Name : {{$quizName}} <a class=" text-yellow-500 text-sm" href="/add-quiz">Back</a></h2>
     <div class=" w-200">
         <ul class=" border border-gray-200">
             <li class=" p-2 font-bold">
