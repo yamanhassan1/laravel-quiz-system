@@ -36,9 +36,10 @@
                         <div>
                             <p class="text-slate-800 text-sm font-medium">{{$item->name}}</p>
                             <p class="text-slate-400 text-xs mt-0.5">Quiz #{{$item->id}}</p>
+                            <p class="text-slate-400 text-xs mt-0.5">Questions: {{$item->mcqs->count()}}</p>
                         </div>
                     </div>
-                    <a href="/"
+                    <a href="/start-quiz/{{$item->id}}/{{$item->name}}"
                         class="inline-flex items-center gap-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-4 py-2 rounded-xl transition-all duration-150">
                         <svg xmlns="http://www.w3.org/2000/svg" height="13px" viewBox="0 -960 960 960" width="13px" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
                         Attempt Quiz

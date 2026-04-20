@@ -12,10 +12,6 @@
     {{-- Hero section --}}
     <section class="bg-white border-b border-gray-100">
         <div class="max-w-5xl mx-auto px-6 py-14 text-center">
-            <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-emerald-100">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                Free quizzes — no signup needed
-            </div>
             <h1 class="text-emerald-950 text-4xl font-bold tracking-tight leading-tight mb-4">
                 Test your knowledge.<br>
                 <span class="text-emerald-600">Challenge yourself daily.</span>

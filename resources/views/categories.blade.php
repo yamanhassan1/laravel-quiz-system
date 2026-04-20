@@ -58,6 +58,7 @@
                     <tr class="bg-slate-50 border-b border-gray-100">
                         <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3 w-16">#</th>
                         <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3">Name</th>
+                        <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3">Quizzes</th>
                         <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3">Created by</th>
                         <th class="text-right text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3 w-28">Actions</th>
                     </tr>
@@ -67,6 +68,7 @@
                     <tr class="border-b border-gray-50 hover:bg-slate-50/50 transition-colors duration-100">
                         <td class="px-6 py-4 text-slate-400 text-sm">{{$category->id}}</td>
                         <td class="px-6 py-4 text-slate-800 text-sm font-medium">{{$category->name}}</td>
+                        <td class="px-6 py-4 text-slate-500 text-sm">{{$category->quizzes->count()}}</td>
                         <td class="px-6 py-4 text-slate-500 text-sm">{{$category->creator}}</td>
                         <td class="px-6 py-4 text-right">
                             <div class="flex items-center justify-end gap-2">
