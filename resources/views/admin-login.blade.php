@@ -52,7 +52,7 @@
                     @enderror
                 </div>
                 <button type="submit"
-                    class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-1">
+                    class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-1 cursor-pointer">
                     Sign In
                 </button>
             </form>

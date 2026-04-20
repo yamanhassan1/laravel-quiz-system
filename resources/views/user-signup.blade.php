@@ -39,7 +39,7 @@
                 <div>
                     <label class="block text-slate-600 text-xs font-medium mb-1.5 uppercase tracking-wide">Username</label>
                     <input type="text" name="name" placeholder="Enter user name"
-                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-slate-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
+                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
                     @error('name')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -47,7 +47,7 @@
                 <div>
                     <label class="block text-slate-600 text-xs font-medium mb-1.5 uppercase tracking-wide">User Email</label>
                     <input type="email" name="email" placeholder="Enter email address"
-                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-slate-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
+                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
                     @error('email')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -55,7 +55,7 @@
                 <div>
                     <label class="block text-slate-600 text-xs font-medium mb-1.5 uppercase tracking-wide">Password</label>
                     <input type="password" name="password" placeholder="••••••••"
-                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-slate-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
+                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
                     @error('password')
                         <p class="text-red-500 text-xs mt-1">{{$message}}</p>
                     @enderror
@@ -63,10 +63,10 @@
                 <div>
                     <label class="block text-slate-600 text-xs font-medium mb-1.5 uppercase tracking-wide">Confirm Password</label>
                     <input type="password" name="password_confirmation" placeholder="••••••••"
-                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-slate-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
+                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
                 </div>
                 <button type="submit"
-                    class="w-full py-2.5 bg-green-800 hover:bg-green-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-1">
+                    class="w-full py-2.5 bg-green-800 hover:bg-green-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-1 cursor-pointer">
                     Sign Up
                 </button>
             </form>

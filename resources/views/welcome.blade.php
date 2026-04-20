@@ -25,7 +25,7 @@
                 <input type="text"
                     class="w-full px-5 py-3 pr-12 border border-gray-200 rounded-2xl text-sm text-slate-800 bg-white shadow-sm focus:border-emerald-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300"
                     placeholder="Search quizzes or categories...">
-                <button class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center transition-colors duration-150">
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center transition-colors duration-150 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px" fill="white"><path d="M765-144 526-383q-30 22-65.79 34.5-35.79 12.5-76.18 12.5Q284-336 214-406t-70-170q0-100 70-170t170-70q100 0 170 70t70 170.03q0 40.39-12.5 76.18Q599-464 577-434l239 239-51 51ZM384-408q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Z"/></svg>
                 </button>
             </div>

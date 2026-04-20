@@ -38,7 +38,7 @@
                     </select>
                 </div>
                 <button type="submit"
-                    class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-2">
+                    class="w-full py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-2 cursor-pointer">
                     Create Quiz & Add MCQs →
                 </button>
             </form>
@@ -118,15 +118,15 @@
 
                 <div class="flex gap-3 pt-2">
                     <button type="submit" name="submit" value="add-more"
-                        class="flex-1 py-2.5 border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-700 text-sm font-medium rounded-xl transition-all duration-150">
+                        class="flex-1 py-2.5 border border-slate-300 hover:border-slate-400 hover:bg-slate-50 text-slate-700 text-sm font-medium rounded-xl transition-all duration-150 cursor-pointer">
                         Save & Add More
                     </button>
                     <button type="submit" name="submit" value="done"
-                        class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition-all duration-150">
+                        class="flex-1 py-2.5 bg-slate-800 hover:bg-slate-900 text-white text-sm font-medium rounded-xl transition-all duration-150 cursor-pointer">
                         Save & Finish
                     </button>
                 </div>
-                <a class="block w-full py-2.5 border border-red-200 hover:bg-red-50 text-red-500 hover:text-red-700 text-center text-sm font-medium rounded-xl transition-all duration-150"
+                <a class="block w-full py-2.5 border border-red-200 hover:bg-red-50 text-red-500 hover:text-red-700 text-center text-sm font-medium rounded-xl transition-all duration-150 cursor-pointer"
                     href="\end-quiz">
                     Discard & Exit
                 </a>
