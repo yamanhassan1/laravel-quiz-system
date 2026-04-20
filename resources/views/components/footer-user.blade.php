@@ -1,4 +1,4 @@
-<footer class=" bg-green-950 text-gray-300 text-center py-7 mx-auto">
+<footer class=" bg-green-950 text-gray-300 text-center py-7 mx-auto w-full">
     <div class=" container mx-auto">
         <h2 class=" text-2xl font-bold mb-3">Quiz System</h2>
         <p class=" mb-3">Your ultimate destination for fun and challenging quizzes!</p>

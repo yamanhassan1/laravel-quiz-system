@@ -3,45 +3,96 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Categories Page</title>
+    <title>Quiz System — Test Your Knowledge</title>
     @vite('resources/css/app.css')
 </head>
-<body>
+<body class="bg-gray-50 min-h-screen flex flex-col">
     <x-user-navbar></x-user-navbar>
-    <div class=" bg-gray-100 flex flex-col items-center min-h-screen pt-5">
-        <h1 class=" text-4xl text-green-900 font-bold">Welcome to Quiz System</h1>
-        <p class=" text-lg text-gray-700 mt-3">Test your knowledge with our exciting quizzes!</p>
-        <div class=" mt-5 w-full max-w-md">
-            <div class=" relative">
-                <input class=" w-full px-4 py-2 border border-gray-500 rounded-2xl shadow text-gray-700" type="text" placeholder="Search quiz...">
-                <button class=" absolute right-2 top-1/2 transform -translate-y-1/2 text-gray-600 px-3 py-1 rounded-full"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#434343"><path d="M765-144 526-383q-30 22-65.79 34.5-35.79 12.5-76.18 12.5Q284-336 214-406t-70-170q0-100 70-170t170-70q100 0 170 70t70 170.03q0 40.39-12.5 76.18Q599-464 577-434l239 239-51 51ZM384-408q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Z"/></svg></button>
+
+    {{-- Hero section --}}
+    <section class="bg-white border-b border-gray-100">
+        <div class="max-w-5xl mx-auto px-6 py-14 text-center">
+            <div class="inline-flex items-center gap-2 bg-emerald-50 text-emerald-700 text-xs font-semibold px-3 py-1.5 rounded-full mb-5 border border-emerald-100">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                Free quizzes — no signup needed
+            </div>
+            <h1 class="text-emerald-950 text-4xl font-bold tracking-tight leading-tight mb-4">
+                Test your knowledge.<br>
+                <span class="text-emerald-600">Challenge yourself daily.</span>
+            </h1>
+            <p class="text-slate-500 text-base max-w-md mx-auto leading-relaxed mb-8">
+                Hundreds of quizzes across every topic. Pick a category, attempt a quiz, and see how you score.
+            </p>
+
+            {{-- Search --}}
+            <div class="relative max-w-md mx-auto">
+                <input type="text"
+                    class="w-full px-5 py-3 pr-12 border border-gray-200 rounded-2xl text-sm text-slate-800 bg-white shadow-sm focus:border-emerald-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300"
+                    placeholder="Search quizzes or categories...">
+                <button class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center transition-colors duration-150">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px" fill="white"><path d="M765-144 526-383q-30 22-65.79 34.5-35.79 12.5-76.18 12.5Q284-336 214-406t-70-170q0-100 70-170t170-70q100 0 170 70t70 170.03q0 40.39-12.5 76.18Q599-464 577-434l239 239-51 51ZM384-408q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Z"/></svg>
+                </button>
             </div>
         </div>
-    <div class=" w-200">
-        <h1 class=" text-2xl text-green-900 font-bold text-center my-5">Category List</h1>
-        <ul class=" border border-gray-200">
-            <li class=" p-2 font-bold">
-                <ul class=" flex justify-between">
-                    <li class=" w-30">S No.</li>
-                    <li class=" w-140">Name</li>
-                    <li class=" w-30">Action</li>
-                </ul>
-            </li>
-            @foreach($categories as $key=>$category)
-            <li class=" even:bg-gray-200 p-2">
-                <ul class=" flex justify-between">
-                    <li class=" w-30">{{$key + 1}}</li>
-                    <li class=" w-140">{{$category->name}}</li>
-                    <li class=" w-30">
-                        <a href="/quiz-list/{{$category->id}}/{{$category->name}}"><svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 -960 960 960" width="20px" fill="#000000"><path d="M599-361q49-49 49-119t-49-119q-49-49-119-49t-119 49q-49 49-49 119t49 119q49 49 119 49t119-49Zm-187-51q-28-28-28-68t28-68q28-28 68-28t68 28q28 28 28 68t-28 68q-28 28-68 28t-68-28ZM220-270.5Q103-349 48-480q55-131 172-209.5T480-768q143 0 260 78.5T912-480q-55 131-172 209.5T480-192q-143 0-260-78.5ZM480-480Zm207 158q95-58 146-158-51-100-146-158t-207-58q-112 0-207 58T127-480q51 100 146 158t207 58q112 0 207-58Z"/></svg>
-                        </a>
-                    </li>
-                </ul>
-            </li>
-            @endforeach
-        </ul>
-    </div>
-    </div>
+    </section>
+
+    {{-- Categories --}}
+    <main class="flex-1 max-w-5xl mx-auto w-full px-6 py-10">
+        <div class="flex items-center justify-between mb-6">
+            <h2 class="text-emerald-900 text-lg font-semibold tracking-tight">Browse Categories</h2>
+            <span class="text-slate-400 text-sm">{{count($categories)}} available</span>
+        </div>
+
+        <div class="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm">
+            <table class="w-full">
+                <thead>
+                    <tr class="bg-slate-50 border-b border-gray-100">
+                        <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3 w-16">#</th>
+                        <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3">Category</th>
+                        <th class="text-left text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3 w-32">Quizzes</th>
+                        <th class="text-right text-slate-400 text-xs font-medium uppercase tracking-wide px-6 py-3 w-28">Explore</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($categories as $key => $category)
+                    <tr class="border-b border-gray-50 hover:bg-emerald-50/30 transition-colors duration-100">
+                        <td class="px-6 py-4 text-slate-400 text-sm">{{$key + 1}}</td>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8 rounded-xl bg-emerald-100 text-emerald-700 flex items-center justify-center text-xs font-bold shrink-0">
+                                    {{strtoupper(substr($category->name, 0, 1))}}
+                                </div>
+                                <span class="text-slate-800 text-sm font-medium">{{$category->name}}</span>
+                            </div>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="inline-flex items-center gap-1 bg-emerald-50 text-emerald-700 border border-emerald-100 text-xs font-semibold px-2.5 py-1 rounded-lg">
+                                {{$category->quizzes_count}} quizzes
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                            <a href="/user-quiz-list/{{$category->id}}/{{$category->name}}"
+                                class="inline-flex items-center gap-1.5 text-emerald-600 hover:text-emerald-800 text-xs font-semibold hover:bg-emerald-50 px-3 py-1.5 rounded-lg transition-all duration-150">
+                                View Quizzes
+                                <svg xmlns="http://www.w3.org/2000/svg" height="13px" viewBox="0 -960 960 960" width="13px" fill="currentColor"><path d="M504-480 320-664l56-56 240 240-240 240-56-56 184-184Z"/></svg>
+                            </a>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            @if(count($categories) === 0)
+                <div class="px-6 py-16 text-center">
+                    <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-4">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#059669"><path d="M200-280v-80h560v80H200Zm0-160v-80h560v80H200Zm0-160v-80h560v80H200Z"/></svg>
+                    </div>
+                    <p class="text-slate-500 text-sm font-medium">No categories yet</p>
+                    <p class="text-slate-400 text-xs mt-1">Check back soon for new quizzes!</p>
+                </div>
+            @endif
+        </div>
+    </main>
+
     <x-footer-user></x-footer-user>
 </body>
 </html>
