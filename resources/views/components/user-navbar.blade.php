@@ -12,8 +12,8 @@
             <a class="text-slate-500 hover:text-emerald-700 hover:bg-emerald-50 px-3 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/">Blog</a>
             <div class="w-px h-4 bg-gray-200 mx-1"></div>
             @if(session('user'))
-            <a class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/">Welcome, {{session('user')->name}}</a>
-            <a class="bg-red-500 hover:bg-red-600 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/user-logout">LogOut</a>
+            <a class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/user-details">Welcome, {{session('user')->name}}</a>
+            <a class="text-red-500 hover:text-red-700 bg-red-50 hover:bg-red-100 px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/user-logout">LogOut</a>
             @else
             <a class="bg-emerald-600 hover:bg-emerald-700 text-white px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/user-login">Login</a>
             <a class="bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-4 py-1.5 rounded-lg text-sm font-medium transition-all duration-150" href="/user-signup">Sign Up</a>

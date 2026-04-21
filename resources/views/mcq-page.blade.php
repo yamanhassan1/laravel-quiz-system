@@ -55,7 +55,7 @@
 
             {{-- Options (shared — JS copies selected value to both forms on submit) --}}
             <div class="px-8 py-6 space-y-3" id="options-wrapper">
-
+                    <input type="hidden", name='id' value="{{$mcqData->id}}">
                 <label for="option_1"
                     class="flex items-center gap-4 border border-gray-200 hover:border-emerald-400 hover:bg-emerald-50/40 px-4 py-3.5 rounded-xl cursor-pointer transition-all duration-150 group">
                     <input id="option_1" type="radio" name="option" value="a"

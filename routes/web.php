@@ -5,19 +5,20 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
 Route::get('/', [UserController::class,'welcome']);
-Route::get('/user-quiz-list/{id}/{category}', [UserController::class,'userQuizList']);
-Route::view('/user-signup', 'user-signup');
-Route::post('/user-signup', [UserController::class,'userSignup']);
-Route::get('/start-quiz/{id}/{name}', [UserController::class,'startQuiz']);
-Route::get('/user-logout', [UserController::class,'userLogout']);
-Route::get('/user-signup-start', [UserController::class,'userSignupStart']);
+Route::get('user-quiz-list/{id}/{category}', [UserController::class,'userQuizList']);
+Route::view('user-signup', 'user-signup');
+Route::post('user-signup', [UserController::class,'userSignup']);
+Route::get('start-quiz/{id}/{name}', [UserController::class,'startQuiz']);
+Route::get('user-logout', [UserController::class,'userLogout']);
+Route::get('user-signup-start', [UserController::class,'userSignupStart']);
 
-Route::view('/user-login', 'user-login');
-Route::post('/user-login', [UserController::class,'userLogin']);
-Route::get('/user-login-start', [UserController::class,'userLoginStart']);
-Route::get('/mcq/{id}/{name}', [UserController::class,'mcq']);
-Route::post('/submit-next/{id}', [UserController::class,'submitAndNext']);
-Route::post('/previous-mcq/{id}', [UserController::class, 'previousMcq']);
+Route::view('user-login', 'user-login');
+Route::post('user-login', [UserController::class,'userLogin']);
+Route::get('user-login-start', [UserController::class,'userLoginStart']);
+Route::get('mcq/{id}/{name}', [UserController::class,'mcq']);
+Route::post('submit-next/{id}', [UserController::class,'submitAndNext']);
+Route::post('previous-mcq/{id}', [UserController::class, 'previousMcq']);
+Route::get('user-details', [UserController::class, 'userDetails']);
 
 
 Route::view('admin-login', 'admin-login');
