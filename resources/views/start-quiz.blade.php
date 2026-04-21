@@ -16,9 +16,11 @@
             <h2 class="text-lg text-center font-bold mb-6 text-green-800">This Quiz contains {{$quizCount}} Questions and no limit to attempt this Quiz</h2>
             <h3 class="text-2xl text-center font-bold mb-8 text-green-800">Good Luck</h3>
             @if(session('user'))
-            <a class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded-lg text-md font-medium transition-all mx-77 duration-150" href="/user-signup">Start Quiz</a>
+            <a class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded-lg text-md font-medium transition-all mx-77 duration-150" href="/mcq/{{session('firstMCQ')->id.'/'.$quizName}}">Start Quiz</a>
             @else
-            <a class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded-lg text-md font-medium transition-all mx-61 duration-150" href="/user-signup-start">SignUp/LogIn to Start Quiz</a>
+            <a class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded-lg text-md font-medium transition-all mx-66 duration-150" href="/user-signup-start">Register to Start Quiz</a>
+            <div class=" text-green-800 hover:text-green-900 py-5 text-xl font-bold transition-all mx-86">OR</div>
+            <a class="bg-green-800 hover:bg-green-900 text-white px-4 py-2 rounded-lg text-md font-medium transition-all mx-68.5 duration-150" href="/user-login-start">LogIn to Start Quiz</a>
             @endif
         </div>
     </main>
