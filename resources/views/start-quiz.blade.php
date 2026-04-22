@@ -8,9 +8,13 @@
 </head>
 <body class="bg-gray-100 min-h-screen flex flex-col">
     <x-user-navbar></x-user-navbar>
+    @if(session('message-success'))
+            <div class="max-w-full mx-auto px-6 py-1 mb-6 text-sm text-green-700 bg-green-100 border border-green-200 rounded-lg">
+                {{session('message-success')}}
+            </div>
+        @endif
 
     <main class="flex-1 max-w-3xl mx-auto w-full px-6 py-10 items-center">
-
         <div class="flex-col items-center gap-3 mb-8">
             <h1 class="text-4xl text-center font-bold mb-6 text-slate-800">{{$quizName}}</h1>
             <h2 class="text-lg text-center font-bold mb-6 text-green-800">This Quiz contains {{$quizCount}} Questions and no limit to attempt this Quiz</h2>

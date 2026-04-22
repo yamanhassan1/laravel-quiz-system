@@ -8,6 +8,11 @@
 </head>
 <body class="bg-gray-50 min-h-screen flex flex-col">
     <x-user-navbar></x-user-navbar>
+    @if(session('message-success'))
+            <div class="max-w-full mx-auto px-6 py-2 mb-6 text-sm text-green-700 bg-green-100 border border-green-200 rounded-lg">
+                {{session('message-success')}}
+            </div>
+        @endif
 
     {{-- Hero section --}}
     <section class="bg-white border-b border-gray-100">
@@ -22,12 +27,14 @@
 
             {{-- Search --}}
             <div class="relative max-w-md mx-auto">
-                <input type="text"
+                <form action="quiz-search" method="get">
+                    <input type="text" name="search"
                     class="w-full px-5 py-3 pr-12 border border-gray-200 rounded-2xl text-sm text-slate-800 bg-white shadow-sm focus:border-emerald-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300"
                     placeholder="Search quizzes or categories...">
                 <button class="absolute right-3 top-1/2 -translate-y-1/2 w-8 h-8 rounded-xl bg-emerald-600 hover:bg-emerald-700 flex items-center justify-center transition-colors duration-150 cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" height="15px" viewBox="0 -960 960 960" width="15px" fill="white"><path d="M765-144 526-383q-30 22-65.79 34.5-35.79 12.5-76.18 12.5Q284-336 214-406t-70-170q0-100 70-170t170-70q100 0 170 70t70 170.03q0 40.39-12.5 76.18Q599-464 577-434l239 239-51 51ZM384-408q70 0 119-49t49-119q0-70-49-119t-119-49q-70 0-119 49t-49 119q0 70 49 119t119 49Z"/></svg>
                 </button>
+                </form>
             </div>
         </div>
     </section>
@@ -77,7 +84,7 @@
                     @endforeach
                 </tbody>
             </table>
-            @if(count($categories) === 0)
+            @if(count($categories) == 0)
                 <div class="px-6 py-16 text-center">
                     <div class="w-12 h-12 rounded-2xl bg-emerald-50 flex items-center justify-center mx-auto mb-4">
                         <svg xmlns="http://www.w3.org/2000/svg" height="22px" viewBox="0 -960 960 960" width="22px" fill="#059669"><path d="M200-280v-80h560v80H200Zm0-160v-80h560v80H200Zm0-160v-80h560v80H200Z"/></svg>

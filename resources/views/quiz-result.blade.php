@@ -15,7 +15,7 @@
             <h1 class="text-emerald-900 text-4xl font-bold tracking-tight leading-tight mb-4">
                 Result of Quiz: {{$quizName}}<br>
                 <h1 class="text-green-800 text-2xl font-bold tracking-tight">
-                Total Marks: <span class="text-emerald-600">{{$correctAnswer}}</span>
+                Total Marks: <span class="text-emerald-600">{{$correctAnswers}}</span>
                 <span class="text-emarld-300">/</span>
                 <span class="text-slate-400 font-medium text-xl">{{count($resultData)}}</span>
             </h1>
