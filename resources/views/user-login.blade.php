@@ -3,73 +3,308 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Log in to your Quiz System account to continue your learning journey">
     <title>User LogIn — Quiz System</title>
     @vite('resources/css/app.css')
     <style>
         body { font-family: 'Inter', system-ui, sans-serif; }
+        
+        input:focus {
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        .input-error {
+            border-color: #ef4444 !important;
+            background-color: #fef2f2 !important;
+        }
+        
+        .input-success {
+            border-color: #10b981 !important;
+        }
     </style>
 </head>
-<body>
+<body class="bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
     <x-user-navbar></x-user-navbar>
-    <div class="bg-green-50 min-h-screen flex items-center justify-center p-4">
-    <div class="w-full max-w-sm">
-
-        {{-- Logo / Brand --}}
-        <div class="text-center mb-8">
-            <div class="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-green-800 mb-4">
-                <svg width="20" height="20" viewBox="0 0 14 14" fill="none"><path d="M7 1L9.5 5.5H12.5L10 8.5L11 12.5L7 10.5L3 12.5L4 8.5L1.5 5.5H4.5L7 1Z" fill="white"/></svg>
+    
+    <div class="min-h-screen flex items-center justify-center p-4">
+        <div class="w-full max-w-md">
+            
+            {{-- Logo / Brand --}}
+            <div class="text-center mb-8">
+                <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-green-700 to-emerald-700 shadow-lg mb-4">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L15.5 9H22L16.5 14L19 21L12 16.5L5 21L7.5 14L2 9H8.5L12 2Z" fill="white" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <h1 class="text-green-900 text-2xl font-bold tracking-tight">Quiz System</h1>
+                <p class="text-slate-500 text-sm mt-1">Welcome back! Log in to continue</p>
             </div>
-            <h1 class="text-green-900 text-xl font-semibold tracking-tight">Quiz System</h1>
-            <p class="text-slate-400 text-sm mt-1">User LogIn</p>
+            
+            {{-- Card --}}
+            <div class="bg-white/90 backdrop-blur-sm border border-gray-100 rounded-2xl p-8 shadow-xl">
+                <div class="flex items-center justify-between mb-6">
+                    <h2 class="text-green-800 text-lg font-bold">Log In</h2>
+                    <div class="flex gap-1">
+                        <div class="w-2 h-2 rounded-full bg-green-200"></div>
+                        <div class="w-2 h-2 rounded-full bg-green-300"></div>
+                        <div class="w-2 h-2 rounded-full bg-green-400"></div>
+                    </div>
+                </div>
+                
+                {{-- Error Messages --}}
+                @if(session('message-error'))
+                    <div class="bg-red-50 border-l-4 border-red-500 text-red-700 text-sm rounded-lg px-4 py-3 mb-4 flex items-center gap-2">
+                        <svg class="w-4 h-4 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{ session('message-error') }}</span>
+                    </div>
+                @endif
+                
+                {{-- Validation Errors --}}
+                @if($errors->any())
+                    <div class="bg-red-50 border-l-4 border-red-500 text-red-700 text-sm rounded-lg px-4 py-3 mb-4">
+                        <div class="flex items-center gap-2 mb-1">
+                            <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="font-semibold">Login failed:</span>
+                        </div>
+                        <ul class="list-disc list-inside text-xs space-y-0.5">
+                            @foreach($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+                
+                {{-- Success Message (for logout/registration) --}}
+                @if(session('message-success'))
+                    <div class="bg-emerald-50 border-l-4 border-emerald-500 text-emerald-700 text-sm rounded-lg px-4 py-3 mb-4 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                        </svg>
+                        <span>{{ session('message-success') }}</span>
+                    </div>
+                @endif
+                
+                <form action="/user-login" method="post" id="loginForm" class="space-y-5">
+                    @csrf
+                    
+                    {{-- Email Field --}}
+                    <div>
+                        <label class="block text-slate-700 text-xs font-bold mb-2 uppercase tracking-wide">
+                            Email Address <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-4 w-4 text-slate-400 group-focus-within:text-green-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                </svg>
+                            </div>
+                            <input type="email" 
+                                   name="email" 
+                                   id="email"
+                                   value="{{ old('email') }}"
+                                   placeholder="you@example.com"
+                                   autocomplete="email"
+                                   class="w-full pl-9 pr-3 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
+                        </div>
+                        @error('email')
+                            <p class="text-red-500 text-xs mt-1.5 flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                    
+                    {{-- Password Field --}}
+                    <div>
+                        <label class="block text-slate-700 text-xs font-bold mb-2 uppercase tracking-wide">
+                            Password <span class="text-red-500">*</span>
+                        </label>
+                        <div class="relative group">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-4 w-4 text-slate-400 group-focus-within:text-green-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                                </svg>
+                            </div>
+                            <input type="password" 
+                                   name="password" 
+                                   id="password"
+                                   placeholder="Enter your password"
+                                   autocomplete="current-password"
+                                   class="w-full pl-9 pr-10 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
+                            <button type="button" id="togglePassword" class="absolute inset-y-0 right-0 pr-3 flex items-center">
+                                <svg class="h-4 w-4 text-slate-400 hover:text-slate-600 transition-colors" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                                </svg>
+                            </button>
+                        </div>
+                        @error('password')
+                            <p class="text-red-500 text-xs mt-1.5 flex items-center gap-1">
+                                <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                                    <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
+                                </svg>
+                                {{ $message }}
+                            </p>
+                        @enderror
+                    </div>
+                    
+                    {{-- Remember Me & Forgot Password Row --}}
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center gap-2 cursor-pointer">
+                            <input type="checkbox" 
+                                   name="remember" 
+                                   id="remember" 
+                                   value="1"
+                                   class="w-3.5 h-3.5 rounded border-gray-300 text-green-600 focus:ring-green-500 cursor-pointer">
+                            <span class="text-xs text-slate-600">Remember me</span>
+                        </label>
+                        <a href="/user-forgot-password" class="text-xs text-green-600 hover:text-green-700 font-medium hover:underline">
+                            Forgot password?
+                        </a>
+                    </div>
+                    
+                    {{-- Submit Button --}}
+                    <button type="submit"
+                            id="submitBtn"
+                            class="w-full py-2.5 bg-gradient-to-r from-green-700 to-emerald-700 hover:from-green-800 hover:to-emerald-800 text-white text-sm font-semibold rounded-xl transition-all duration-150 mt-2 shadow-md hover:shadow-lg">
+                        Log In
+                    </button>
+                    
+                    {{-- Sign Up Link --}}
+                    <div class="text-center text-sm text-slate-600 pt-3">
+                        Don't have an account? 
+                        <a href="/user-signup" class="text-green-600 hover:text-green-700 font-semibold hover:underline">
+                            Create one now!
+                        </a>
+                    </div>
+                </form>
+                
+                {{-- Demo Credentials (Optional - for testing) --}}
+                <div class="mt-6 pt-4 border-t border-gray-100">
+                    <p class="text-center text-xs text-slate-400 mb-2">Demo Credentials</p>
+                    <div class="flex justify-center gap-4 text-xs">
+                        <div class="text-slate-500">
+                            <span class="font-medium">Email:</span> demo@quiz.com
+                        </div>
+                        <div class="text-slate-500">
+                            <span class="font-medium">Password:</span> password123
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            {{-- Footer --}}
+            <p class="text-center text-slate-400 text-xs mt-6">
+                © {{ date('Y') }} Quiz System. All rights reserved.
+            </p>
         </div>
-
-        {{-- Card --}}
-        <div class="bg-white border border-gray-200 rounded-2xl p-8 shadow-sm">
-            @if(session('message-error'))
-                <div class="bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-2.5 mb-4 flex items-center gap-2">
-                    {{session('message-error')}}
-                </div>
-            @endif
-            <h2 class="text-green-800 text-[15px] font-semibold mb-5">Log In to your account</h2>
-
-            @error('user')
-                <div class="bg-red-50 border border-red-200 text-red-600 text-sm rounded-lg px-4 py-2.5 mb-4 flex items-center gap-2">
-                    <svg width="14" height="14" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
-                    {{$message}}
-                </div>
-            @enderror
-
-            <form action="/user-login" method="post" class="space-y-4">
-                @csrf
-                <div>
-                    <label class="block text-slate-600 text-xs font-medium mb-1.5 uppercase tracking-wide">User Email</label>
-                    <input type="email" name="email" placeholder="Enter email address"
-                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
-                    @error('email')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </div>
-                <div>
-                    <label class="block text-slate-600 text-xs font-medium mb-1.5 uppercase tracking-wide">Password</label>
-                    <input type="password" name="password" placeholder="••••••••"
-                        class="w-full px-3.5 py-2.5 border border-gray-200 rounded-xl text-sm text-slate-800 bg-slate-50 focus:bg-white focus:border-green-400 focus:outline-none transition-all duration-150 placeholder:text-slate-300">
-                    @error('password')
-                        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
-                    @enderror
-                </div>
-                <button type="submit"
-                    class="w-full py-2.5 bg-green-800 hover:bg-green-900 text-white text-sm font-medium rounded-xl transition-all duration-150 mt-1 cursor-pointer">
-                    Log In
-                </button>
-                <div class="text-sm">
-                    <a href="/user-forgot-password" class="text-green-600 hover:text-green-700 font-medium transition-all duration-150">Forgot Password?</a>
-                </div>
-                <div class=" text-sm">Have no account? <a href="/user-signup" class="text-green-600 hover:text-green-700 font-medium transition-all duration-150 text-md">Register Here!</a></div>
-            </form>
-        </div>
-
-        <p class="text-center text-slate-400 text-xs mt-6">&copy; 2026 Quiz System</p>
     </div>
-    </div>
+    
+    <script>
+        // Toggle password visibility
+        const toggleBtn = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', function() {
+                const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+                passwordInput.setAttribute('type', type);
+                
+                const icon = this.querySelector('svg');
+                if (type === 'text') {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.542-7a9.977 9.977 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.542 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21"/>';
+                } else {
+                    icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>';
+                }
+            });
+        }
+        
+        // Real-time email validation
+        const emailInput = document.getElementById('email');
+        if (emailInput) {
+            emailInput.addEventListener('input', function() {
+                const email = this.value;
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                
+                if (email.length > 0 && !emailRegex.test(email)) {
+                    this.classList.add('input-error');
+                    this.classList.remove('input-success');
+                } else if (email.length > 0 && emailRegex.test(email)) {
+                    this.classList.remove('input-error');
+                    this.classList.add('input-success');
+                } else {
+                    this.classList.remove('input-error', 'input-success');
+                }
+            });
+        }
+        
+        // Password validation
+        if (passwordInput) {
+            passwordInput.addEventListener('input', function() {
+                if (this.value.length > 0 && this.value.length < 6) {
+                    this.classList.add('input-error');
+                    this.classList.remove('input-success');
+                } else if (this.value.length >= 6) {
+                    this.classList.remove('input-error');
+                    this.classList.add('input-success');
+                } else {
+                    this.classList.remove('input-error', 'input-success');
+                }
+            });
+        }
+        
+        // Form submission with simple disabled state (no loading animation)
+        const form = document.getElementById('loginForm');
+        const submitBtn = document.getElementById('submitBtn');
+        
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                const email = emailInput?.value.trim();
+                const password = passwordInput?.value;
+                let hasError = false;
+                
+                // Client-side validation
+                if (!email || !email.match(/^[^\s@]+@[^\s@]+\.[^\s@]+$/)) {
+                    if (emailInput) {
+                        emailInput.classList.add('input-error');
+                    }
+                    hasError = true;
+                }
+                
+                if (!password || password.length < 6) {
+                    if (passwordInput) {
+                        passwordInput.classList.add('input-error');
+                    }
+                    hasError = true;
+                }
+                
+                if (hasError) {
+                    e.preventDefault();
+                    return false;
+                }
+                
+                // Disable button on submit (no loading animation)
+                if (submitBtn) {
+                    submitBtn.disabled = true;
+                    submitBtn.style.opacity = '0.7';
+                    submitBtn.textContent = 'Logging in...';
+                }
+            });
+        }
+        
+        // Remove error styling on focus
+        const inputs = document.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('focus', function() {
+                this.classList.remove('input-error', 'input-success');
+            });
+        });
+    </script>
 </body>
 </html>
